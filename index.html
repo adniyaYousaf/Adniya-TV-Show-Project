@@ -8,21 +8,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
-  <body class="center">
-    <template id="root">
-      <section class="card">
-        <h1 class="card-title center">Episode title</h1>
-        <section class="card-body center">
-          <img class="card-body" src="" alt="image of the video" />
-          <p class="card-summary">Summary</p>
+  <body>
+    <header>
+      <input id="input" type="text" />
+    </header>
+    <section id="container" class="container center">
+      <template id="root">
+        <section class="card">
+          <h1 class="card-title center">Episode title</h1>
+          <section class="card-body center">
+            <img class="card-body" src="" alt="image of the video" />
+            <p class="card-summary">Summary</p>
+          </section>
         </section>
-      </section>
-    </template>
+      </template>
+    </section>
 
     <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
     <script src="episodes.js"></script>

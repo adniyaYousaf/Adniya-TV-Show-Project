@@ -2,7 +2,7 @@
 function setup() {
   const allEpisodes = getAllEpisodes();
   const episodeCards = makePageForEpisodes(allEpisodes);
-  document.body.append(...episodeCards);
+  document.querySelector('#container').append(...episodeCards);
 }
 
 function makePageForEpisodes(episodeList) {
