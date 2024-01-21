@@ -1,13 +1,27 @@
 //You can edit ALL of the code here
-function setup() {
-  const allEpisodes = getAllEpisodes();
-  const episodeCards = makePageForEpisodes(allEpisodes);
-  document.querySelector('#container').append(...episodeCards);
-}
+const input = document.querySelector('#input');
+let SearchTerm = "";
 
-function makePageForEpisodes(episodeList) {
-  const episodeCards = episodeList.map(e => createEpisodesCard(e));
-  return episodeCards;
+input.addEventListener('input', SearchEpisode);
+
+function SearchEpisode() {
+    SearchTerm = input.value;
+    document.querySelectorAll('.card').forEach((e) => {
+      e.remove()
+    })
+    render();
+  }
+
+function render() {
+
+  const allEpisodes = getAllEpisodes();
+  let filteredEpisode = allEpisodes.filter((episode) =>
+    episode.name.includes(SearchTerm));
+
+  let episodeCards = filteredEpisode.map(episode =>
+    createEpisodesCard(episode));
+
+  document.querySelector('#container').append(...episodeCards);
 }
 
 function createEpisodesCard(episode) {
@@ -19,7 +33,7 @@ function createEpisodesCard(episode) {
   rootElem.querySelector('p').innerHTML = episode.summary;
 
   return rootElem;
+
 }
 
-window.onload = setup;
-
+window.onload = render;
