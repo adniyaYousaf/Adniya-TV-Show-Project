@@ -1,27 +1,41 @@
-//You can edit ALL of the code here
+
+
 const input = document.querySelector('#input');
 let SearchTerm = "";
+
+async function getAllEpisodes() {
+  return fetch("https://api.tvmaze.com/shows/82/episodes").then((data) => {
+    const response = data.json();
+    return response;
+  })
+}
+
 
 input.addEventListener('input', SearchEpisode);
 
 function SearchEpisode() {
-    SearchTerm = input.value;
-    document.querySelectorAll('.card').forEach((e) => {
-      e.remove()
-    })
-    render();
-  }
+  SearchTerm = input.value;
+  document.querySelectorAll('.card').forEach((e) => {
+    e.remove()
+  })
+  render();
+}
 
 function render() {
 
-  const allEpisodes = getAllEpisodes();
-  let filteredEpisode = allEpisodes.filter((episode) =>
-    episode.name.includes(SearchTerm));
+  getAllEpisodes().then((data) => {
+    
+    const allEpisodes = data;
 
-  let episodeCards = filteredEpisode.map(episode =>
-    createEpisodesCard(episode));
+    let filteredEpisode = allEpisodes.filter((episode) =>
+      episode.name.includes(SearchTerm));
 
-  document.querySelector('#container').append(...episodeCards);
+    let episodeCards = filteredEpisode.map(episode =>
+      createEpisodesCard(episode));
+
+    document.querySelector('#container').append(...episodeCards);
+  });
+
 }
 
 function createEpisodesCard(episode) {
