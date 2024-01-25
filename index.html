@@ -20,22 +20,22 @@
     <header>
       <input id="input" type="text" placeholder="Filter episodes" />
     </header>
+    <section class="selectShow center">
+        <select class="show" name="Show" id="selectShow">
+          <option id="option" value="1">None</option>
+        </select>
+    </section>
     <section id="container" class="container center">
       <template id="root">
         <section class="card">
-          <h1 class="card-title center">Episode title</h1>
+          <h1 class="card-title center"></h1>
           <section class="card-body center">
-            <img class="card-body" src="" alt="image of the video" />
-            <p class="card-summary">Summary</p>
+            <img class="card-body" src="" alt="image of the Episode" />
+            <p class="card-summary">Loading The Episodes</p>
           </section>
         </section>
       </template>
     </section>
-
-    <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
-    <script src="episodes.js"></script>
-
-    <!-- Loads YOUR javascript code -->
     <script src="script.js"></script>
   </body>
 </html>

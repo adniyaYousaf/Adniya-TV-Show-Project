@@ -33,6 +33,17 @@ body header input {
   font-size: 1.3rem;
   color: #747d8c;
 }
+body .selectShow {
+  height: 5rem;
+  width: 100%;
+  color: black;
+  justify-content: flex-start;
+  margin-left: 14%;
+}
+body .selectShow .show {
+  height: 3rem;
+  width: 15rem;
+}
 body .container {
   display: grid;
   grid-template-columns: repeat(3, auto);
@@ -40,7 +51,7 @@ body .container {
   margin: 2rem;
 }
 body .card {
-  height: 36rem;
+  height: 45rem;
   width: 20rem;
   text-align: left;
   background: white;
@@ -48,7 +59,7 @@ body .card {
   gap: 2rem;
 }
 body .card .card-title {
-  font-size: 1.2rem;
+  font-size: 1rem;
   height: 5rem;
   border: 2px solid black;
   border-radius: 1rem;
@@ -58,6 +69,7 @@ body .card .card-body {
   padding-inline: 1rem;
   gap: 1rem;
   display: flex;
+  font-size: 0.8rem;
   flex-direction: column;
   justify-content: center;
 }
