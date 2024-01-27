@@ -1,6 +1,6 @@
 const Select = document.querySelector('#selectShow');
 const input = document.querySelector('#input');
-let selectedShow = 3;
+let selectedShow = 1;
 let SearchTerm = "";
 
 async function getAllShows() {
@@ -11,34 +11,40 @@ async function getAllShows() {
 
 function getAllEpisodes() {
   return fetch(`https://api.tvmaze.com/shows/${selectedShow}/episodes`)
-  .then((data) => {
-    return data.json();
-  })
+    .then((data) => {
+      return data.json();
+    })
 }
 
 function displayShowList() {
-  getAllShows().then((data) => {
-    const list = data;
+  getAllShows().then((showList) => {
 
-    list.forEach((show) => {
+    showList.forEach((show) => {
       const option = document.createElement('option');
       Select.appendChild(option);
       option.textContent = show.name;
-
-      selectedShow = show.id
-      option.addEventListener('click', makePageCards)
+      option.setAttribute('id', `${show.id}`);
     });
+  })
 
+  Select.addEventListener('change', () => {
+    let selectedOption = Select.options[Select.selectedIndex];
+    selectedShow = selectedOption.getAttribute('id');
+    clearCard();
+    makePageCards()
   })
 }
-displayShowList();
-
+ function displayShowCards(){
+  getAllShows().then((show) => {
+    
+  })
+ }
 
 input.addEventListener('input', SearchEpisode);
 
 function SearchEpisode() {
   SearchTerm = input.value;
-  clearCards()
+  clearCard();
   makePageCards();
 }
 
@@ -51,11 +57,12 @@ function makePageCards() {
       episode.name.includes(SearchTerm));
 
     let episodeCards = filteredEpisode.map(episode =>
-      createEpisodesCard(episode) );
+      createEpisodesCard(episode));
 
     document.querySelector('#container').append(...episodeCards);
   });
 }
+displayShowList();
 
 function createEpisodesCard(episode) {
   const rootElem = document.querySelector("#root").content.cloneNode(true);
@@ -67,11 +74,12 @@ function createEpisodesCard(episode) {
 
   return rootElem;
 }
-
-function clearCards() {
+function clearCard() {
   document.querySelectorAll('.card').forEach((e) => {
     e.remove()
   })
 }
 
-window.onload = makePageCards;
+
+makePageCards();
+window.onload = displayShowList;

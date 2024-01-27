@@ -35,7 +35,6 @@ body header input {
 }
 body .selectShow {
   height: 5rem;
-  width: 100%;
   color: black;
   justify-content: flex-start;
   margin-left: 14%;
@@ -51,8 +50,8 @@ body .container {
   margin: 2rem;
 }
 body .card {
-  height: 45rem;
-  width: 20rem;
+  height: 25rem;
+  width: 26rem;
   text-align: left;
   background: white;
   border-radius: 1rem;
