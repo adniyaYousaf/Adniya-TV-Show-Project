@@ -17,18 +17,21 @@
   </head>
   <body>
     <header>
-      <input id="input" type="text" placeholder="Filter episodes" />
-      <span id="episodeNumber">Displaying </span>
+      <section class="selectShow center">
+        <select class="show" name="Show" id="selectShow"></select>
+      </section>
+      <section>
+        <input id="input" type="text" placeholder="Filter episodes" />
+        <span id="episodeNumber" class="episodeNumber">Displaying </span>
+      </section>
     </header>
-    <section class="selectShow center">
-      <select class="show" name="Show" id="selectShow"></select>
-    </section>
+
     <section id="container" class="container center">
       <template id="root">
         <section class="card">
           <h1 class="card-title center"></h1>
           <section class="card-body center">
-            <img  src="" alt="image of the Episode" />
+            <img src="" alt="image of the Episode" />
             <p class="card-summary">Loading The Episodes</p>
           </section>
         </section>

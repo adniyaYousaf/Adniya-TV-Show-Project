@@ -17,7 +17,10 @@ body
         height: 7rem
         width: 100%
         background: #353b48
-        padding: 2% 15%
+        display: flex
+        gap: 2rem
+        align-items: center
+        padding-inline: 5rem
 
         input
             grid-area: input
@@ -27,16 +30,20 @@ body
             border: none
             outline: none
             padding: 1rem
-            font-size: 1.3rem
             color: #747d8c
+            font-size: 1.3rem
     .selectShow
-        height: 5rem
-        color: black
-        justify-content: flex-start
-        margin-left: 14%
+        height: 6rem
+
         .show
             height: 3rem
             width: 15rem
+            font-size: 1rem
+            padding: 0.7rem
+            border-radius: 0.5rem
+    .episodeNumber
+        color: white
+        margin-inline-start: 1rem
     .container
         display: grid
         grid-template-columns: repeat(3,auto)

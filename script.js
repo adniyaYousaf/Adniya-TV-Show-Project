@@ -17,6 +17,7 @@ function getAllEpisodes() {
 }
 
 function displayShowList() {
+
   getAllShows().then((showList) => {
 
     showList.forEach((show) => {
@@ -34,11 +35,7 @@ function displayShowList() {
     makePageCards()
   })
 }
- function displayShowCards(){
-  getAllShows().then((show) => {
-    
-  })
- }
+
 
 input.addEventListener('input', SearchEpisode);
 
@@ -53,12 +50,14 @@ function makePageCards() {
   getAllEpisodes().then((data) => {
     const allEpisodes = data;
 
+
+
     let filteredEpisode = allEpisodes.filter((episode) =>
       episode.name.includes(SearchTerm));
 
     let episodeCards = filteredEpisode.map(episode =>
       createEpisodesCard(episode));
-
+    displayShowCardsNumbers(data, filteredEpisode);
     document.querySelector('#container').append(...episodeCards);
   });
 }
@@ -76,10 +75,14 @@ function createEpisodesCard(episode) {
 }
 function clearCard() {
   document.querySelectorAll('.card').forEach((e) => {
-    e.remove()
+    e.remove();
   })
 }
 
+function displayShowCardsNumbers(data, filtered) {
+  const displayNumber = document.querySelector('#episodeNumber');
+  displayNumber.textContent = "Displaying " + filtered.length + "/" + data.length + " Episodes";
+}
 
 makePageCards();
 window.onload = displayShowList;
