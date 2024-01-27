@@ -50,7 +50,7 @@ body
         gap: 3rem
         margin: 2rem
     .card
-        height: 25rem
+        height: 28rem
         width: 26rem
         text-align: left
         background: white
@@ -63,6 +63,7 @@ body
             border-radius: 1rem
             margin-bottom: 1rem
         .card-body
+            position: relative
             padding-inline: 1rem
             gap: 1rem
             display: flex
@@ -71,3 +72,15 @@ body
             justify-content: center
             .card-image
                 width: 80%
+            .card-summary
+                line-height: 1.7rem
+                display: flex
+            .readMore
+                cursor: pointer
+                position: absolute
+                bottom: -4rem
+                background: gray
+                padding: 0.5rem 1rem
+                border-radius: 1rem
+                color: white
+                text-decoration: none

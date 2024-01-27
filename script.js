@@ -1,5 +1,6 @@
 const Select = document.querySelector('#selectShow');
 const input = document.querySelector('#input');
+const readMore = document.querySelector('#readMore');
 let selectedShow = 1;
 let SearchTerm = "";
 
@@ -64,12 +65,16 @@ function makePageCards() {
 displayShowList();
 
 function createEpisodesCard(episode) {
+
   const rootElem = document.querySelector("#root").content.cloneNode(true);
   const seasonPluEp = "S" + episode.season.toString().padStart(2, "0") + "E" + episode.number.toString().padStart(2, "0");
 
   rootElem.querySelector("h1").textContent = episode.name + "-" + seasonPluEp;
   rootElem.querySelector("img").src = episode.image.medium;
   rootElem.querySelector('p').innerHTML = episode.summary;
+  limitText(rootElem.querySelector('p'), 30);
+  rootElem.querySelector('#url').href = episode.url;
+
 
   return rootElem;
 }
@@ -83,6 +88,11 @@ function displayShowCardsNumbers(data, filtered) {
   const displayNumber = document.querySelector('#episodeNumber');
   displayNumber.textContent = "Displaying " + filtered.length + "/" + data.length + " Episodes";
 }
-
+function limitText(element, limit) {
+  var text = element.innerText;
+  var words = text.split(' ');
+  var truncated = words.slice(0, limit).join(' ');
+  element.textContent = truncated + '...';
+}
 makePageCards();
 window.onload = displayShowList;

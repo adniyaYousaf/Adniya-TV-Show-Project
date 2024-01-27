@@ -57,7 +57,7 @@ body .container {
   margin: 2rem;
 }
 body .card {
-  height: 25rem;
+  height: 28rem;
   width: 26rem;
   text-align: left;
   background: white;
@@ -72,6 +72,7 @@ body .card .card-title {
   margin-bottom: 1rem;
 }
 body .card .card-body {
+  position: relative;
   padding-inline: 1rem;
   gap: 1rem;
   display: flex;
@@ -81,6 +82,20 @@ body .card .card-body {
 }
 body .card .card-body .card-image {
   width: 80%;
+}
+body .card .card-body .card-summary {
+  line-height: 1.7rem;
+  display: flex;
+}
+body .card .card-body .readMore {
+  cursor: pointer;
+  position: absolute;
+  bottom: -4rem;
+  background: gray;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  color: white;
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=style.css.map */
