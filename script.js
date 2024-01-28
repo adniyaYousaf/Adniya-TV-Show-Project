@@ -14,7 +14,6 @@ async function getAllShows() {
 }
 
 async function getAllEpisodes() {
-  console.log(selectedShow);
   return await fetch(`https://api.tvmaze.com/shows/${selectedShow}/episodes`)
     .then((data) => {
       return data.json();
@@ -37,30 +36,26 @@ function displayShowList() {
     let selectedOption = Select.options[Select.selectedIndex];
     selectedShow = selectedOption.getAttribute('id');
     clearCard();
-    displayEpisodeList()
     makePageCards();
-
   })
 }
 
 function displayEpisodeList() {
 
-  EpisodeDropDown.innerHTML = '';
   getAllEpisodes().then((Episodes) => {
-
     Episodes.forEach((ep) => {
+      const seasonPluEp = "S" + ep.season.toString().padStart(2, "0") + "E" + ep.number.toString().padStart(2, "0");
       const option = document.createElement('option');
       EpisodeDropDown.appendChild(option);
-      option.textContent = ep.name;
+      option.textContent = seasonPluEp + "-" + ep.name;
     });
-
   })
 
 
   EpisodeDropDown.addEventListener('change', () => {
     let selectedOption = EpisodeDropDown.options[EpisodeDropDown.selectedIndex];
     clearCard();
-    SearchTerm = selectedOption.textContent;
+    SearchTerm = selectedOption;
     makePageCards();
   })
 }
@@ -75,6 +70,9 @@ function SearchEpisode() {
 
 function makePageCards() {
 
+  EpisodeDropDown.innerHTML = '';
+  displayEpisodeList();
+
   getAllEpisodes().then((data) => {
     const allEpisodes = data;
 
@@ -83,6 +81,7 @@ function makePageCards() {
 
     let episodeCards = filteredEpisode.map(episode =>
       createEpisodesCard(episode));
+
     displayShowCardsNumbers(data, filteredEpisode);
     document.querySelector('#container').append(...episodeCards);
   });
