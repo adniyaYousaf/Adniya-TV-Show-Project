@@ -32,15 +32,22 @@ body
             padding: 1rem
             color: #747d8c
             font-size: 1.3rem
-    .selectShow
-        height: 6rem
-
-        .show
-            height: 3rem
-            width: 15rem
-            font-size: 1rem
-            padding: 0.7rem
-            border-radius: 0.5rem
+        .selectShow
+            height: 6rem
+            .show
+                height: 3rem
+                width: 15rem
+                font-size: 1rem
+                padding: 0.7rem
+                border-radius: 0.5rem
+        .selectEpisode
+            height: 6rem
+            .episode
+                height: 3rem
+                width: 15rem
+                font-size: 1rem
+                padding: 0.7rem
+                border-radius: 0.5rem
     .episodeNumber
         color: white
         margin-inline-start: 1rem
@@ -50,7 +57,7 @@ body
         gap: 3rem
         margin: 2rem
     .card
-        height: 28rem
+        height: 30rem
         width: 26rem
         text-align: left
         background: white
@@ -78,9 +85,12 @@ body
             .readMore
                 cursor: pointer
                 position: absolute
-                bottom: -4rem
+                top: 19.5rem
                 background: gray
                 padding: 0.5rem 1rem
                 border-radius: 1rem
                 color: white
                 text-decoration: none
+                &:hover,
+                &:focus-visible
+                    background: red

@@ -18,7 +18,13 @@
   <body>
     <header>
       <section class="selectShow center">
-        <select class="show" name="Show" id="selectShow"></select>
+        <select class="show" name="Show" id="selectShow">
+          <option value="1">Select a Show</option>
+        </select>
+      </section>
+
+      <section class="selectEpisode center">
+        <select class="episode" name="episode" id="selectEpisode"></select>
       </section>
       <section>
         <input id="input" type="text" placeholder="Filter episodes" />
@@ -33,7 +39,7 @@
           <section class="card-body center">
             <img src="" alt="image of the Episode" />
             <p class="card-summary">Loading The Episodes</p>
-            <a class="readMore" id="url" href="">Read More</a>
+            <a class="readMore" id="url" href="">More Detail</a>
           </section>
         </section>
       </template>

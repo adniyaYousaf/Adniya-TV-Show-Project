@@ -1,8 +1,11 @@
 const Select = document.querySelector('#selectShow');
+let EpisodeDropDown = document.querySelector('#selectEpisode')
 const input = document.querySelector('#input');
 const readMore = document.querySelector('#readMore');
 let selectedShow = 1;
+let selectedEpisode = 1;
 let SearchTerm = "";
+
 
 async function getAllShows() {
   return await fetch("https://api.tvmaze.com/shows").then((data) => {
@@ -10,8 +13,9 @@ async function getAllShows() {
   })
 }
 
-function getAllEpisodes() {
-  return fetch(`https://api.tvmaze.com/shows/${selectedShow}/episodes`)
+async function getAllEpisodes() {
+  console.log(selectedShow);
+  return await fetch(`https://api.tvmaze.com/shows/${selectedShow}/episodes`)
     .then((data) => {
       return data.json();
     })
@@ -33,10 +37,33 @@ function displayShowList() {
     let selectedOption = Select.options[Select.selectedIndex];
     selectedShow = selectedOption.getAttribute('id');
     clearCard();
-    makePageCards()
+    displayEpisodeList()
+    makePageCards();
+
   })
 }
 
+function displayEpisodeList() {
+
+  EpisodeDropDown.innerHTML = '';
+  getAllEpisodes().then((Episodes) => {
+
+    Episodes.forEach((ep) => {
+      const option = document.createElement('option');
+      EpisodeDropDown.appendChild(option);
+      option.textContent = ep.name;
+    });
+
+  })
+
+
+  EpisodeDropDown.addEventListener('change', () => {
+    let selectedOption = EpisodeDropDown.options[EpisodeDropDown.selectedIndex];
+    clearCard();
+    SearchTerm = selectedOption.textContent;
+    makePageCards();
+  })
+}
 
 input.addEventListener('input', SearchEpisode);
 
@@ -51,8 +78,6 @@ function makePageCards() {
   getAllEpisodes().then((data) => {
     const allEpisodes = data;
 
-
-
     let filteredEpisode = allEpisodes.filter((episode) =>
       episode.name.includes(SearchTerm));
 
@@ -62,8 +87,6 @@ function makePageCards() {
     document.querySelector('#container').append(...episodeCards);
   });
 }
-displayShowList();
-
 function createEpisodesCard(episode) {
 
   const rootElem = document.querySelector("#root").content.cloneNode(true);
@@ -72,7 +95,7 @@ function createEpisodesCard(episode) {
   rootElem.querySelector("h1").textContent = episode.name + "-" + seasonPluEp;
   rootElem.querySelector("img").src = episode.image.medium;
   rootElem.querySelector('p').innerHTML = episode.summary;
-  limitText(rootElem.querySelector('p'), 30);
+  limitText(rootElem.querySelector('p'), 45);
   rootElem.querySelector('#url').href = episode.url;
 
 

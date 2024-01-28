@@ -36,10 +36,20 @@ body header input {
   color: #747d8c;
   font-size: 1.3rem;
 }
-body .selectShow {
+body header .selectShow {
   height: 6rem;
 }
-body .selectShow .show {
+body header .selectShow .show {
+  height: 3rem;
+  width: 15rem;
+  font-size: 1rem;
+  padding: 0.7rem;
+  border-radius: 0.5rem;
+}
+body header .selectEpisode {
+  height: 6rem;
+}
+body header .selectEpisode .episode {
   height: 3rem;
   width: 15rem;
   font-size: 1rem;
@@ -57,7 +67,7 @@ body .container {
   margin: 2rem;
 }
 body .card {
-  height: 28rem;
+  height: 30rem;
   width: 26rem;
   text-align: left;
   background: white;
@@ -90,12 +100,15 @@ body .card .card-body .card-summary {
 body .card .card-body .readMore {
   cursor: pointer;
   position: absolute;
-  bottom: -4rem;
+  top: 19.5rem;
   background: gray;
   padding: 0.5rem 1rem;
   border-radius: 1rem;
   color: white;
   text-decoration: none;
+}
+body .card .card-body .readMore:hover, body .card .card-body .readMore:focus-visible {
+  background: red;
 }
 
 /*# sourceMappingURL=style.css.map */
