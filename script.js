@@ -55,7 +55,9 @@ function displayEpisodeList() {
   EpisodeDropDown.addEventListener('change', () => {
     let selectedOption = EpisodeDropDown.options[EpisodeDropDown.selectedIndex];
     clearCard();
-    SearchTerm = selectedOption;
+    console.log(selectedOption);
+    const nameOfTheEpisodeOnly = selectedOption.textContent.split('-')
+    SearchTerm = nameOfTheEpisodeOnly[1];
     makePageCards();
   })
 }
@@ -76,14 +78,17 @@ function makePageCards() {
   getAllEpisodes().then((data) => {
     const allEpisodes = data;
 
+
     let filteredEpisode = allEpisodes.filter((episode) =>
       episode.name.includes(SearchTerm));
 
+    console.log(filteredEpisode, SearchTerm);
     let episodeCards = filteredEpisode.map(episode =>
       createEpisodesCard(episode));
 
     displayShowCardsNumbers(data, filteredEpisode);
     document.querySelector('#container').append(...episodeCards);
+    SearchTerm = "";
   });
 }
 function createEpisodesCard(episode) {
