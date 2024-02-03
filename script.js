@@ -6,20 +6,20 @@ let selectedShow = 1;
 let selectedEpisode = 1;
 let SearchTerm = "";
 
-
+// fetch Api function to fetch the shows
 async function getAllShows() {
   return await fetch("https://api.tvmaze.com/shows").then((data) => {
     return data.json();
   })
 }
-
+// fetch Api function to fetch the Episodes of selected show
 async function getAllEpisodes() {
   return await fetch(`https://api.tvmaze.com/shows/${selectedShow}/episodes`)
     .then((data) => {
       return data.json();
     })
 }
-
+// function to display the all show in dropdown menu
 function displayShowList() {
 
   getAllShows().then((showList) => {
@@ -40,6 +40,7 @@ function displayShowList() {
   })
 }
 
+// function to display the all Episodes in dropdown menu of selected show
 function displayEpisodeList() {
 
   getAllEpisodes().then((Episodes) => {
@@ -63,13 +64,13 @@ function displayEpisodeList() {
 }
 
 input.addEventListener('input', SearchEpisode);
-
+// function search the Episode by name
 function SearchEpisode() {
   SearchTerm = input.value;
   clearCard();
   makePageCards();
 }
-
+// this function display the episodes card on the page according to the current state
 function makePageCards() {
 
   EpisodeDropDown.innerHTML = '';
@@ -82,7 +83,6 @@ function makePageCards() {
     let filteredEpisode = allEpisodes.filter((episode) =>
       episode.name.includes(SearchTerm));
 
-    console.log(filteredEpisode, SearchTerm);
     let episodeCards = filteredEpisode.map(episode =>
       createEpisodesCard(episode));
 
@@ -91,13 +91,15 @@ function makePageCards() {
     SearchTerm = "";
   });
 }
+
+//create card component for each episode
 function createEpisodesCard(episode) {
 
   const rootElem = document.querySelector("#root").content.cloneNode(true);
   const seasonPluEp = "S" + episode.season.toString().padStart(2, "0") + "E" + episode.number.toString().padStart(2, "0");
 
   rootElem.querySelector("h1").textContent = episode.name + "-" + seasonPluEp;
-  rootElem.querySelector("img").src = episode.image.medium;
+  rootElem.querySelector("img").src = episode.image.original;
   rootElem.querySelector('p').innerHTML = episode.summary;
   limitText(rootElem.querySelector('p'), 45);
   rootElem.querySelector('#url').href = episode.url;

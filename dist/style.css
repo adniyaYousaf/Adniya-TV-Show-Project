@@ -13,22 +13,22 @@
 body {
   min-height: 100vh;
   font-size: 1rem;
-  background: #e2e4e9;
+  background: #ffffff;
   font-family: "Poppins", sans-serif;
 }
 body header {
   height: 7rem;
   width: 100%;
-  background: #353b48;
+  background: #000000;
   display: flex;
-  gap: 2rem;
   align-items: center;
+  justify-content: space-between;
   padding-inline: 5rem;
 }
 body header input {
   grid-area: input;
   height: 3rem;
-  width: 18rem;
+  width: 20rem;
   border-radius: 0.5rem;
   border: none;
   outline: none;
@@ -41,7 +41,7 @@ body header .selectShow {
 }
 body header .selectShow .show {
   height: 3rem;
-  width: 15rem;
+  width: 20rem;
   font-size: 1rem;
   padding: 0.7rem;
   border-radius: 0.5rem;
@@ -51,7 +51,7 @@ body header .selectEpisode {
 }
 body header .selectEpisode .episode {
   height: 3rem;
-  width: 15rem;
+  width: 20rem;
   font-size: 1rem;
   padding: 0.7rem;
   border-radius: 0.5rem;
@@ -67,15 +67,15 @@ body .container {
   margin: 2rem;
 }
 body .card {
-  height: 30rem;
+  height: 40rem;
   width: 26rem;
   text-align: left;
-  background: white;
+  background: #d9e8e9;
   border-radius: 1rem;
   gap: 2rem;
 }
 body .card .card-title {
-  font-size: 1rem;
+  font-size: 1.3rem;
   height: 5rem;
   border: 2px solid black;
   border-radius: 1rem;
@@ -90,18 +90,20 @@ body .card .card-body {
   flex-direction: column;
   justify-content: center;
 }
-body .card .card-body .card-image {
-  width: 80%;
+body .card .card-body .card-img {
+  width: 90%;
+  border-radius: 1rem;
 }
 body .card .card-body .card-summary {
   line-height: 1.7rem;
   display: flex;
+  margin-inline: 1rem;
 }
 body .card .card-body .readMore {
   cursor: pointer;
   position: absolute;
-  top: 19.5rem;
-  background: gray;
+  top: 24rem;
+  background: #324647;
   padding: 0.5rem 1rem;
   border-radius: 1rem;
   color: white;
