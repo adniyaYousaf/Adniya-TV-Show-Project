@@ -56,7 +56,6 @@ function displayEpisodeList() {
   EpisodeDropDown.addEventListener('change', () => {
     let selectedOption = EpisodeDropDown.options[EpisodeDropDown.selectedIndex];
     clearCard();
-    console.log(selectedOption);
     const nameOfTheEpisodeOnly = selectedOption.textContent.split('-')
     SearchTerm = nameOfTheEpisodeOnly[1];
     makePageCards();
