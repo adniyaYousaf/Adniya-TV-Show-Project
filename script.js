@@ -2,6 +2,8 @@ const Select = document.querySelector('#selectShow');
 let EpisodeDropDown = document.querySelector('#selectEpisode')
 const input = document.querySelector('#input');
 const readMore = document.querySelector('#readMore');
+const goBackBtn = document.querySelector('#goBackBtn');
+
 let selectedShow = 1;
 let selectedEpisode = 1;
 let SearchTerm = "";
@@ -14,11 +16,21 @@ async function getAllShows() {
 }
 // fetch Api function to fetch the Episodes of selected show
 async function getAllEpisodes() {
+  const rootElem = document.querySelector('#root');
+  const massage = `<div>Cant load the Episodes</div>`;
+
   return await fetch(`https://api.tvmaze.com/shows/${selectedShow}/episodes`)
-    .then((data) => {
-      return data.json();
+    .then((response) => {
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`)
+      }
+      return response.json();
+
     })
 }
+
+
 // function to display the all show in dropdown menu
 function displayShowList() {
 
@@ -69,6 +81,14 @@ function SearchEpisode() {
   clearCard();
   makePageCards();
 }
+
+
+function SearchShow() {
+  SearchTerm = input.value;
+  clearCard();
+  renderShow();
+}
+
 // this function display the episodes card on the page according to the current state
 function makePageCards() {
 
@@ -78,7 +98,6 @@ function makePageCards() {
   getAllEpisodes().then((data) => {
     const allEpisodes = data;
 
-
     let filteredEpisode = allEpisodes.filter((episode) =>
       episode.name.includes(SearchTerm));
 
@@ -86,8 +105,31 @@ function makePageCards() {
       createEpisodesCard(episode));
 
     displayShowCardsNumbers(data, filteredEpisode);
+
     document.querySelector('#container').append(...episodeCards);
     SearchTerm = "";
+  });
+}
+
+function renderShow() {
+
+  EpisodeDropDown.innerHTML = '';
+  displayEpisodeList();
+
+  getAllShows().then((data) => {
+    const allShow = data;
+
+    let filteredShow = allShow.filter((show) =>
+      show.name.includes(SearchTerm));
+
+    let showCards = filteredShow.map(show =>
+      createShowCards(show));
+
+    displayShowCardsNumbers(allShow, filteredShow);
+
+    document.querySelector('#container').append(...showCards);
+    SearchTerm = "";
+
   });
 }
 
@@ -96,6 +138,7 @@ function createEpisodesCard(episode) {
 
   const rootElem = document.querySelector("#root").content.cloneNode(true);
   const seasonPluEp = "S" + episode.season.toString().padStart(2, "0") + "E" + episode.number.toString().padStart(2, "0");
+
 
   rootElem.querySelector("h1").textContent = episode.name + "-" + seasonPluEp;
   rootElem.querySelector("img").src = episode.image.original;
@@ -112,7 +155,21 @@ function clearCard() {
   })
 }
 
+function createShowCards(show) {
+
+  const rootElem = document.querySelector("#root").content.cloneNode(true);
+
+  rootElem.querySelector("h1").textContent = show.name;
+  rootElem.querySelector("img").src = show.image.original;
+  rootElem.querySelector('a').href = show.url;
+  rootElem.querySelector('p').innerHTML = show.summary;
+  limitText(rootElem.querySelector('p'), 45);
+  rootElem.querySelector('#url').remove();
+
+  return rootElem;
+}
 function displayShowCardsNumbers(data, filtered) {
+
   const displayNumber = document.querySelector('#episodeNumber');
   displayNumber.textContent = "Displaying " + filtered.length + "/" + data.length + " Episodes";
 }
@@ -122,5 +179,9 @@ function limitText(element, limit) {
   var truncated = words.slice(0, limit).join(' ');
   element.textContent = truncated + '...';
 }
-makePageCards();
-window.onload = displayShowList;
+
+
+
+displayShowList();
+
+window.onload = renderShow;

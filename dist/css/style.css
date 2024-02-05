@@ -13,29 +13,22 @@
 a {
   text-decoration: none;
   color: black;
-  width: 80%;
-}
-
-img {
-  width: 100%;
 }
 
 body {
   min-height: 100vh;
   font-size: 1rem;
-  background: black;
+  background: #e2e4e9;
   font-family: "Poppins", sans-serif;
 }
 body header {
   height: 7rem;
   width: 100%;
+  background: #353b48;
   display: flex;
   gap: 2rem;
   align-items: center;
   padding-inline: 5rem;
-}
-body header .home {
-  color: white;
 }
 body header input {
   grid-area: input;
@@ -85,11 +78,6 @@ body .card {
   background: white;
   border-radius: 1rem;
   gap: 2rem;
-  transform: scale(1);
-  transition: transform 0.5s ease;
-}
-body .card:hover {
-  transform: scale(1.01);
 }
 body .card .card-title {
   font-size: 1rem;
@@ -108,7 +96,7 @@ body .card .card-body {
   justify-content: center;
 }
 body .card .card-body .card-image {
-  width: 1rem;
+  width: 80%;
 }
 body .card .card-body .card-summary {
   line-height: 1.7rem;
@@ -117,13 +105,12 @@ body .card .card-body .card-summary {
 body .card .card-body .readMore {
   cursor: pointer;
   position: absolute;
-  top: 40rem;
+  top: 19.5rem;
   background: gray;
   padding: 0.5rem 1rem;
   border-radius: 1rem;
   color: white;
   text-decoration: none;
-  text-align: center;
 }
 body .card .card-body .readMore:hover, body .card .card-body .readMore:focus-visible {
   background: red;
