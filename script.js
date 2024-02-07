@@ -167,13 +167,13 @@ function createEpisodesCard(episode) {
 
   return rootElem;
 }
-
+// Remove all the Episodes from the page
 function clearCard() {
   document.querySelectorAll('.card').forEach((e) => {
     e.remove();
   });
 }
-
+// Remove all the Show cards from the page
 function clearShows() {
   document.querySelectorAll('.showCard').forEach((e) => {
     e.remove();
@@ -183,6 +183,7 @@ function clearShows() {
 function createShowCards(show) {
 
   const rootElem = document.querySelector("#showCards").content.cloneNode(true);
+
   rootElem.querySelector('section').setAttribute('id', show.id);
   rootElem.querySelector('h1').textContent = show.name;
   rootElem.querySelector('img').src = show.image.original;
@@ -205,7 +206,7 @@ function displayShowCardsNumbers(data, filtered) {
   const displayNumber = document.querySelector('#episodeNumber');
   displayNumber.textContent = "Displaying " + filtered.length + "/" + data.length + " Episodes";
 }
-
+//This function Limit the words of the paragraph
 function limitText(element, limit) {
   var text = element.innerText;
   var words = text.split(' ');
@@ -213,6 +214,7 @@ function limitText(element, limit) {
   element.textContent = truncated + '...';
 }
 
+//This button when clicked bring back to main page
 home.addEventListener('click', () => {
   clearCard();
   renderShow();
