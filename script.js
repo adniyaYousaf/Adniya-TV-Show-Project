@@ -197,7 +197,7 @@ function createShowCards(show) {
  
   rootElem.querySelector('#genres').innerHTML = genre;
   rootElem.querySelector('#status').innerHTML = show.status;
-  rootElem.querySelector('#runtime').innerHTML = show.runtime;
+  rootElem.querySelector('#runtime').innerHTML = show.runtime + " " + "Min";
 
   return rootElem;
 }
