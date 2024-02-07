@@ -188,19 +188,20 @@ function createShowCards(show) {
   rootElem.querySelector('h1').textContent = show.name;
   rootElem.querySelector('img').src = show.image.original;
   rootElem.querySelector('p').innerHTML = show.summary;
-
+// looping through genre array and show that array as string
   let genre = "";
   rootElem.querySelector('#rate').innerHTML = show.rating.average;
   show.genres.forEach((gen) => {
     genre = `${genre}` + " " + gen;
   });
-
+ 
   rootElem.querySelector('#genres').innerHTML = genre;
   rootElem.querySelector('#status').innerHTML = show.status;
   rootElem.querySelector('#runtime').innerHTML = show.runtime;
 
   return rootElem;
 }
+//This function is display the total number Episodes and show on page
 function displayShowCardsNumbers(data, filtered) {
 
   const displayNumber = document.querySelector('#episodeNumber');
