@@ -204,7 +204,7 @@ function createShowCards(show) {
 function displayShowCardsNumbers(data, filtered) {
 
   const displayNumber = document.querySelector('#episodeNumber');
-  displayNumber.textContent = "Displaying " + filtered.length + "/" + data.length + " Episodes";
+  displayNumber.textContent = "Displaying " + filtered.length + "/" + data.length + " Items";
 }
 //This function Limit the words of the paragraph
 function limitText(element, limit) {
