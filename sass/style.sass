@@ -30,7 +30,13 @@ body
         padding-inline: 5rem
 
         .home
+            cursor: pointer
             color: white
+            font-size: 2rem
+            transition: transform 1s ease
+            transform: scale(1)
+            &:hover
+                transform: scale(1.1)
 
         input
             grid-area: input
@@ -110,3 +116,50 @@ body
                 &:hover,
                 &:focus-visible
                     background: red
+
+    .show-container
+        display: grid
+        grid-template-columns: 1fr
+        justify-items: center
+        gap: 3rem
+        margin: 2rem
+    .showCard
+        cursor: pointer
+        height: 30rem
+        width: 80%
+        display: grid
+        gap: 2rem
+        padding: 0.5rem
+        background: white
+        border: 1px solid black
+        transform: scale(1)
+        transition: transform 0.5s ease
+        &:hover
+            transform: scale(1.01)
+        h1
+            text-align: center
+            font-size: 2.5rem
+            padding-block: 1rem
+        .showBody
+            display: flex
+            overflow: hidden
+            gap: 2rem
+            img
+                width: 20%
+            p
+                width: 50%
+                p
+                    width: 100%
+        .showDetails
+            width: 30%
+            height: 96%
+            display: grid
+            padding: 1rem
+            justify-content: center
+            box-shadow: 3px 3px 10px gray
+            p
+                width: 100%
+                font-weight: 700
+                span
+                    width: 50%
+                    font-weight: 400

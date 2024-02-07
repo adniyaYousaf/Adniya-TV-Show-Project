@@ -25,7 +25,7 @@
   <body>
     <header>
       <section>
-        <i  class="fa-solid fa-house home"></i>
+        <i id="home" class="fa-solid fa-house home"></i>
       </section>
       <section class="selectShow center">
         <select class="show" name="Show" id="selectShow">
@@ -47,14 +47,28 @@
     <section id="container" class="container center">
       <template id="root">
         <section class="card">
-          <h1 class="card-title center"></h1>
-
+          <h1 class="card-title center" id=""></h1>
           <section class="card-body center">
-            <a href="http://">
-              <img class="card-img" src="" alt="image of the Episode" />
-              <p class="card-summary">Loading The Episodes</p>
-              <a class="readMore" id="url" href="">More Detail</a></a
-            >
+            <img class="card-img" src="" alt="image of the Episode" />
+            <p class="card-summary">Loading The Episodes</p>
+            <a class="readMore" id="url" href="">More Detail</a>
+          </section>
+        </section>
+      </template>
+    </section>
+    <section id="show-container" class="show-container">
+      <template id="showCards">
+        <section class="showCard">
+          <h1></h1>
+          <section class="showBody">
+            <img src="" alt="Show Image" />
+            <p></p>
+            <section class="showDetails">
+              <p>Rated: <span id="rate"></span></p>
+              <p>Genres: <span id="genres"></span></p>
+              <p>Status: <span id="status"></span></p>
+              <p>Runtime: <span id="runtime"></span></p>
+            </section>
           </section>
         </section>
       </template>

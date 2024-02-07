@@ -35,7 +35,14 @@ body header {
   padding-inline: 5rem;
 }
 body header .home {
+  cursor: pointer;
   color: white;
+  font-size: 2rem;
+  transition: transform 1s ease;
+  transform: scale(1);
+}
+body header .home:hover {
+  transform: scale(1.1);
 }
 body header input {
   grid-area: input;
@@ -127,6 +134,63 @@ body .card .card-body .readMore {
 }
 body .card .card-body .readMore:hover, body .card .card-body .readMore:focus-visible {
   background: red;
+}
+body .show-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 3rem;
+  margin: 2rem;
+}
+body .showCard {
+  cursor: pointer;
+  height: 30rem;
+  width: 80%;
+  display: grid;
+  gap: 2rem;
+  padding: 0.5rem;
+  background: white;
+  border: 1px solid black;
+  transform: scale(1);
+  transition: transform 0.5s ease;
+}
+body .showCard:hover {
+  transform: scale(1.01);
+}
+body .showCard h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  padding-block: 1rem;
+}
+body .showCard .showBody {
+  display: flex;
+  overflow: hidden;
+  gap: 2rem;
+}
+body .showCard .showBody img {
+  width: 20%;
+}
+body .showCard .showBody p {
+  width: 50%;
+}
+body .showCard .showBody p p {
+  width: 100%;
+}
+body .showCard .showDetails {
+  width: 30%;
+  height: 96%;
+  display: grid;
+  padding: 1rem;
+  justify-content: center;
+  box-shadow: 3px 3px 10px gray;
+}
+body .showCard .showDetails p {
+  width: 100%;
+  font-weight: 700;
+}
+body .showCard .showDetails p span {
+  width: 50%;
+  font-weight: 400;
 }
 
 /*# sourceMappingURL=style.css.map */

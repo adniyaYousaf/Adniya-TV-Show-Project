@@ -2,7 +2,7 @@ const Select = document.querySelector('#selectShow');
 let EpisodeDropDown = document.querySelector('#selectEpisode')
 const input = document.querySelector('#input');
 const readMore = document.querySelector('#readMore');
-const goBackBtn = document.querySelector('#goBackBtn');
+const home = document.querySelector('#home');
 
 let selectedShow = 1;
 let selectedEpisode = 1;
@@ -30,7 +30,6 @@ async function getAllEpisodes() {
     })
 }
 
-
 // function to display the all show in dropdown menu
 function displayShowList() {
 
@@ -46,8 +45,9 @@ function displayShowList() {
 
   Select.addEventListener('change', () => {
     let selectedOption = Select.options[Select.selectedIndex];
-    selectedShow = selectedOption.getAttribute('id');
     clearCard();
+
+    selectedShow = selectedOption.getAttribute('id');
     makePageCards();
   })
 }
@@ -74,18 +74,20 @@ function displayEpisodeList() {
   })
 }
 
-input.addEventListener('input', SearchEpisode);
+
 // function search the Episode by name
 function SearchEpisode() {
   SearchTerm = input.value;
   clearCard();
+  clearShows();
   makePageCards();
 }
 
-
 function SearchShow() {
   SearchTerm = input.value;
+  console.log(SearchTerm);
   clearCard();
+  clearShows();
   renderShow();
 }
 
@@ -93,7 +95,12 @@ function SearchShow() {
 function makePageCards() {
 
   EpisodeDropDown.innerHTML = '';
+
   displayEpisodeList();
+
+  input.setAttribute('placeholder', "Search Episodes");
+  input.removeEventListener('input', SearchShow);
+  input.addEventListener('input', SearchEpisode);
 
   getAllEpisodes().then((data) => {
     const allEpisodes = data;
@@ -127,8 +134,21 @@ function renderShow() {
 
     displayShowCardsNumbers(allShow, filteredShow);
 
-    document.querySelector('#container').append(...showCards);
-    SearchTerm = "";
+    document.querySelector('#show-container').append(...showCards);
+
+    input.setAttribute('placeholder', "Search Shows");
+    input.removeEventListener('input', SearchEpisode);
+    input.addEventListener('input', SearchShow);
+
+    //When show card clicked it takes to episodes of that clicked show
+    document.querySelectorAll('.showCard').forEach((showCard) => {
+      showCard.addEventListener('click', () => {
+        selectedShow = showCard.getAttribute('id');
+        clearCard();
+        clearShows();
+        makePageCards();
+      });
+    });
 
   });
 }
@@ -137,34 +157,46 @@ function renderShow() {
 function createEpisodesCard(episode) {
 
   const rootElem = document.querySelector("#root").content.cloneNode(true);
+
   const seasonPluEp = "S" + episode.season.toString().padStart(2, "0") + "E" + episode.number.toString().padStart(2, "0");
-
-
   rootElem.querySelector("h1").textContent = episode.name + "-" + seasonPluEp;
   rootElem.querySelector("img").src = episode.image.original;
   rootElem.querySelector('p').innerHTML = episode.summary;
   limitText(rootElem.querySelector('p'), 45);
-  rootElem.querySelector('#url').href = episode.url;
-
+  rootElem.querySelector('a').href = episode.url;
 
   return rootElem;
 }
+
 function clearCard() {
   document.querySelectorAll('.card').forEach((e) => {
+    e.remove();
+  });
+}
+
+function clearShows() {
+  document.querySelectorAll('.showCard').forEach((e) => {
     e.remove();
   })
 }
 
 function createShowCards(show) {
 
-  const rootElem = document.querySelector("#root").content.cloneNode(true);
-
-  rootElem.querySelector("h1").textContent = show.name;
-  rootElem.querySelector("img").src = show.image.original;
-  rootElem.querySelector('a').href = show.url;
+  const rootElem = document.querySelector("#showCards").content.cloneNode(true);
+  rootElem.querySelector('section').setAttribute('id', show.id);
+  rootElem.querySelector('h1').textContent = show.name;
+  rootElem.querySelector('img').src = show.image.original;
   rootElem.querySelector('p').innerHTML = show.summary;
-  limitText(rootElem.querySelector('p'), 45);
-  rootElem.querySelector('#url').remove();
+
+  let genre = "";
+  rootElem.querySelector('#rate').innerHTML = show.rating.average;
+  show.genres.forEach((gen) => {
+    genre = `${genre}` + " " + gen;
+  });
+
+  rootElem.querySelector('#genres').innerHTML = genre;
+  rootElem.querySelector('#status').innerHTML = show.status;
+  rootElem.querySelector('#runtime').innerHTML = show.runtime;
 
   return rootElem;
 }
@@ -173,6 +205,7 @@ function displayShowCardsNumbers(data, filtered) {
   const displayNumber = document.querySelector('#episodeNumber');
   displayNumber.textContent = "Displaying " + filtered.length + "/" + data.length + " Episodes";
 }
+
 function limitText(element, limit) {
   var text = element.innerText;
   var words = text.split(' ');
@@ -180,7 +213,11 @@ function limitText(element, limit) {
   element.textContent = truncated + '...';
 }
 
-
+home.addEventListener('click', () => {
+  clearCard();
+  renderShow();
+  input.value = "";
+});
 
 displayShowList();
 
