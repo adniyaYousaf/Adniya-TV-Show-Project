@@ -49,7 +49,8 @@ function displayShowList() {
 
     selectedShow = selectedOption.getAttribute('id');
     makePageCards();
-  })
+  });
+
 }
 
 // function to display the all Episodes in dropdown menu of selected show
@@ -68,10 +69,12 @@ function displayEpisodeList() {
   EpisodeDropDown.addEventListener('change', () => {
     let selectedOption = EpisodeDropDown.options[EpisodeDropDown.selectedIndex];
     clearCard();
+    clearShows();
     const nameOfTheEpisodeOnly = selectedOption.textContent.split('-')
     SearchTerm = nameOfTheEpisodeOnly[1];
     makePageCards();
-  })
+  });
+
 }
 
 
@@ -85,7 +88,6 @@ function SearchEpisode() {
 
 function SearchShow() {
   SearchTerm = input.value;
-  console.log(SearchTerm);
   clearCard();
   clearShows();
   renderShow();
@@ -188,13 +190,13 @@ function createShowCards(show) {
   rootElem.querySelector('h1').textContent = show.name;
   rootElem.querySelector('img').src = show.image.original;
   rootElem.querySelector('p').innerHTML = show.summary;
-// looping through genre array and show that array as string
+  // looping through genre array and show that array as string
   let genre = "";
   rootElem.querySelector('#rate').innerHTML = show.rating.average;
   show.genres.forEach((gen) => {
     genre = `${genre}` + " " + gen;
   });
- 
+
   rootElem.querySelector('#genres').innerHTML = genre;
   rootElem.querySelector('#status').innerHTML = show.status;
   rootElem.querySelector('#runtime').innerHTML = show.runtime + " " + "Min";
