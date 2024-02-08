@@ -117,7 +117,9 @@ function makePageCards() {
 
     document.querySelector('#container').append(...episodeCards);
     SearchTerm = "";
+
   });
+
 }
 
 function renderShow() {
@@ -149,9 +151,10 @@ function renderShow() {
         clearCard();
         clearShows();
         makePageCards();
+        EpisodeDropDown.style.display = "block";
       });
     });
-
+    EpisodeDropDown.style.display = "none";
   });
 }
 
@@ -164,7 +167,7 @@ function createEpisodesCard(episode) {
   rootElem.querySelector("h1").textContent = episode.name + "-" + seasonPluEp;
   rootElem.querySelector("img").src = episode.image.original;
   rootElem.querySelector('p').innerHTML = episode.summary;
-limitText(rootElem.querySelector('p'), 45);
+  limitText(rootElem.querySelector('p'), 45);
   rootElem.querySelector('a').href = episode.url;
 
   return rootElem;
@@ -222,11 +225,7 @@ home.addEventListener('click', () => {
   clearCard();
   renderShow();
   input.value = "";
-  EpisodeDropDown.innerHTML = "";
-  console.log(EpisodeDropDown);
 });
-
-
 
 displayShowList();
 
