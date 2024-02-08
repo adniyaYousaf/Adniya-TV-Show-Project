@@ -1,11 +1,11 @@
-const Select = document.querySelector('#selectShow');
+const showDropDownMenu = document.querySelector('#selectShow');
 let EpisodeDropDown = document.querySelector('#selectEpisode')
 const input = document.querySelector('#input');
 const readMore = document.querySelector('#readMore');
 const home = document.querySelector('#home');
 
 let selectedShow = 1;
-let selectedEpisode = 1;
+let selectedEpisode = "";
 let SearchTerm = "";
 
 // fetch Api function to fetch the shows
@@ -37,16 +37,16 @@ function displayShowList() {
 
     showList.forEach((show) => {
       const option = document.createElement('option');
-      Select.appendChild(option);
+      showDropDownMenu.appendChild(option);
       option.textContent = show.name;
       option.setAttribute('id', `${show.id}`);
     });
   })
 
-  Select.addEventListener('change', () => {
-    let selectedOption = Select.options[Select.selectedIndex];
+  showDropDownMenu.addEventListener('change', () => {
+    let selectedOption = showDropDownMenu.options[showDropDownMenu.selectedIndex];
     clearCard();
-
+    clearShows()
     selectedShow = selectedOption.getAttribute('id');
     makePageCards();
   });
@@ -164,7 +164,7 @@ function createEpisodesCard(episode) {
   rootElem.querySelector("h1").textContent = episode.name + "-" + seasonPluEp;
   rootElem.querySelector("img").src = episode.image.original;
   rootElem.querySelector('p').innerHTML = episode.summary;
-  limitText(rootElem.querySelector('p'), 45);
+limitText(rootElem.querySelector('p'), 45);
   rootElem.querySelector('a').href = episode.url;
 
   return rootElem;
@@ -222,7 +222,11 @@ home.addEventListener('click', () => {
   clearCard();
   renderShow();
   input.value = "";
+  EpisodeDropDown.innerHTML = "";
+  console.log(EpisodeDropDown);
 });
+
+
 
 displayShowList();
 

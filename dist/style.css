@@ -16,6 +16,10 @@ a {
   width: 80%;
 }
 
+.line-clamp {
+  line-clamp: 3;
+}
+
 img {
   width: 100%;
 }
@@ -46,6 +50,7 @@ body header .home {
   transform: scale(1);
 }
 body header .home:hover {
+  color: #f4ecc2;
   transform: scale(1.1);
 }
 body header input {
@@ -57,7 +62,7 @@ body header input {
   outline: none;
   padding: 1rem;
   color: #747d8c;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
 }
 body header .selectShow {
   height: 6rem;
@@ -90,11 +95,10 @@ body .container {
   margin: 2rem;
 }
 body .card {
-  height: 50rem;
+  height: 35rem;
   width: 26rem;
   text-align: left;
   background: white;
-  border-radius: 1rem;
   gap: 2rem;
   transform: scale(1);
   transition: transform 0.5s ease;
@@ -103,10 +107,9 @@ body .card:hover {
   transform: scale(1.01);
 }
 body .card .card-title {
-  font-size: 1rem;
+  font-size: 1.6rem;
   height: 5rem;
-  border: 2px solid black;
-  border-radius: 1rem;
+  border-bottom: 5px solid black;
   margin-bottom: 1rem;
 }
 body .card .card-body {
@@ -128,16 +131,18 @@ body .card .card-body .card-summary {
 body .card .card-body .readMore {
   cursor: pointer;
   position: absolute;
-  top: 40rem;
+  top: 25rem;
   background: gray;
   padding: 0.5rem 1rem;
   border-radius: 1rem;
   color: white;
+  font-weight: 700;
   text-decoration: none;
   text-align: center;
 }
 body .card .card-body .readMore:hover, body .card .card-body .readMore:focus-visible {
-  background: red;
+  background: #f4ecc2;
+  color: black;
 }
 body .show-container {
   display: grid;
@@ -152,17 +157,18 @@ body .showCard {
   width: 80%;
   display: grid;
   gap: 2rem;
-  padding: 0.5rem;
+  padding: 2rem;
   background: white;
   border: 1px solid black;
   transform: scale(1);
-  transition: transform 0.5s ease;
+  transition: 0.5s ease-in-out;
 }
 body .showCard:hover {
   transform: scale(1.01);
+  background: #f4ecc2;
 }
 body .showCard h1 {
-  text-align: center;
+  text-align: left;
   font-size: 2.5rem;
   padding-block: 1rem;
 }

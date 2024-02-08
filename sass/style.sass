@@ -12,6 +12,8 @@ a
     color: black
     width: 80%
 
+.line-clamp
+    line-clamp: 3
 img
     width: 100%
 
@@ -40,6 +42,7 @@ body
             transition: transform 1s ease
             transform: scale(1)
             &:hover
+                color: #f4ecc2
                 transform: scale(1.1)
 
         input
@@ -51,7 +54,7 @@ body
             outline: none
             padding: 1rem
             color: #747d8c
-            font-size: 1.3rem
+            font-size: 1.1rem
         .selectShow
             height: 6rem
             .show
@@ -77,11 +80,10 @@ body
         gap: 3rem
         margin: 2rem
     .card
-        height: 50rem
+        height: 35rem
         width: 26rem
         text-align: left
         background: white
-        border-radius: 1rem
         gap: 2rem
         transform: scale(1)
         transition: transform 0.5s ease
@@ -89,10 +91,9 @@ body
             transform: scale(1.01)
 
         .card-title
-            font-size: 1rem
+            font-size: 1.6rem
             height: 5rem
-            border: 2px solid black
-            border-radius: 1rem
+            border-bottom: 5px solid black
             margin-bottom: 1rem
         .card-body
             position: relative
@@ -110,16 +111,18 @@ body
             .readMore
                 cursor: pointer
                 position: absolute
-                top: 40rem
+                top: 25rem
                 background: gray
                 padding: 0.5rem 1rem
                 border-radius: 1rem
                 color: white
+                font-weight: 700
                 text-decoration: none
                 text-align: center
                 &:hover,
                 &:focus-visible
-                    background: red
+                    background: #f4ecc2
+                    color: black
 
     .show-container
         display: grid
@@ -133,15 +136,16 @@ body
         width: 80%
         display: grid
         gap: 2rem
-        padding: 0.5rem
+        padding: 2rem
         background: white
         border: 1px solid black
         transform: scale(1)
-        transition: transform 0.5s ease
+        transition: .5s ease-in-out
         &:hover
             transform: scale(1.01)
+            background: #f4ecc2
         h1
-            text-align: center
+            text-align: left
             font-size: 2.5rem
             padding-block: 1rem
         .showBody
