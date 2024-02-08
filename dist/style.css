@@ -16,10 +16,6 @@ a {
   width: 80%;
 }
 
-.line-clamp {
-  line-clamp: 3;
-}
-
 img {
   width: 100%;
 }
@@ -57,12 +53,17 @@ body header input {
   grid-area: input;
   height: 3rem;
   width: 17rem;
-  border-radius: 0.5rem;
   border: none;
   outline: none;
   padding: 1rem;
-  color: #747d8c;
   font-size: 1.1rem;
+  background: transparent;
+  color: white;
+  border: none;
+  border-bottom: 1px solid white;
+}
+body header input::placeholder {
+  color: white;
 }
 body header .selectShow {
   height: 6rem;
@@ -72,7 +73,13 @@ body header .selectShow .show {
   width: 17rem;
   font-size: 1rem;
   padding: 0.7rem;
-  border-radius: 0.5rem;
+  background: transparent;
+  color: white;
+  border: none;
+  border-bottom: 1px solid white;
+}
+body header .selectShow .show option {
+  color: black;
 }
 body header .selectEpisode {
   height: 6rem;
@@ -82,7 +89,13 @@ body header .selectEpisode .episode {
   width: 17rem;
   font-size: 1rem;
   padding: 0.7rem;
-  border-radius: 0.5rem;
+  background: transparent;
+  color: white;
+  border: none;
+  border-bottom: 1px solid white;
+}
+body header .selectEpisode .episode option {
+  color: black;
 }
 body .episodeNumber {
   color: white;
@@ -143,6 +156,7 @@ body .card .card-body .readMore {
 body .card .card-body .readMore:hover, body .card .card-body .readMore:focus-visible {
   background: #f4ecc2;
   color: black;
+  border: 1px solid black;
 }
 body .show-container {
   display: grid;

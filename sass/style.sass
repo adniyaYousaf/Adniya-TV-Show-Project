@@ -12,8 +12,6 @@ a
     color: black
     width: 80%
 
-.line-clamp
-    line-clamp: 3
 img
     width: 100%
 
@@ -49,12 +47,16 @@ body
             grid-area: input
             height: 3rem
             width: 17rem
-            border-radius: .5rem
             border: none
             outline: none
             padding: 1rem
-            color: #747d8c
             font-size: 1.1rem
+            background: transparent
+            color: white
+            border: none
+            border-bottom: 1px solid white
+            &::placeholder
+                color: white
         .selectShow
             height: 6rem
             .show
@@ -62,7 +64,12 @@ body
                 width: 17rem
                 font-size: 1rem
                 padding: 0.7rem
-                border-radius: 0.5rem
+                background: transparent
+                color: white
+                border: none
+                border-bottom: 1px solid white
+                option
+                    color: black
         .selectEpisode
             height: 6rem
             .episode
@@ -70,7 +77,12 @@ body
                 width: 17rem
                 font-size: 1rem
                 padding: 0.7rem
-                border-radius: 0.5rem
+                background: transparent
+                color: white
+                border: none
+                border-bottom: 1px solid white
+                option
+                    color: black
     .episodeNumber
         color: white
         margin-inline-start: 1rem
@@ -123,6 +135,7 @@ body
                 &:focus-visible
                     background: #f4ecc2
                     color: black
+                    border: 1px solid black
 
     .show-container
         display: grid

@@ -67,14 +67,15 @@ function displayEpisodeList() {
 
 
   EpisodeDropDown.addEventListener('change', () => {
+
     let selectedOption = EpisodeDropDown.options[EpisodeDropDown.selectedIndex];
     clearCard();
     clearShows();
     const nameOfTheEpisodeOnly = selectedOption.textContent.split('-')
     SearchTerm = nameOfTheEpisodeOnly[1];
     makePageCards();
-  });
 
+  });
 }
 
 
@@ -103,6 +104,8 @@ function makePageCards() {
   input.setAttribute('placeholder', "Search Episodes");
   input.removeEventListener('input', SearchShow);
   input.addEventListener('input', SearchEpisode);
+
+  EpisodeDropDown.style.display = "block";
 
   getAllEpisodes().then((data) => {
     const allEpisodes = data;
@@ -195,7 +198,7 @@ function createShowCards(show) {
   rootElem.querySelector('p').innerHTML = show.summary;
   // looping through genre array and show that array as string
   let genre = "";
-  rootElem.querySelector('#rate').innerHTML = show.rating.average;
+  rootElem.querySelector('#rate').innerHTML = show.rating.average + "/10";
   show.genres.forEach((gen) => {
     genre = `${genre}` + " " + gen;
   });
