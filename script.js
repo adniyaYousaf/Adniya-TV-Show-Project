@@ -83,6 +83,7 @@ function displayEpisodeList() {
 // function search the Episode by name
 function SearchEpisode() {
   SearchTerm = input.value;
+  console.log(input.value);
   clearCard();
   clearShows();
   makePageCards();
@@ -112,7 +113,7 @@ function makePageCards() {
     const allEpisodes = data;
 
     let filteredEpisode = allEpisodes.filter((episode) =>
-      (episode.name.toLocaleLowerCase().includes(SearchTerm)));
+      episode.name.toLowerCase().includes(SearchTerm));
 
     let episodeCards = filteredEpisode.map(episode =>
       createEpisodesCard(episode));
@@ -121,7 +122,6 @@ function makePageCards() {
 
     document.querySelector('#container').append(...episodeCards);
     SearchTerm = "";
-
   });
 
 }
@@ -135,7 +135,7 @@ function renderShow() {
     const allShow = data;
 
     let filteredShow = allShow.filter((show) =>
-      show.name.toLocaleLowerCase().includes(SearchTerm.toLocaleLowerCase()) || show.summary.toLocaleLowerCase().includes(SearchTerm.toLocaleLowerCase()) || show.genres.includes(SearchTerm.toLocaleLowerCase()));
+      show.name.toLowerCase().includes(SearchTerm) || show.summary.toLowerCase().includes(SearchTerm) || show.genres.toLowerCase().includes(SearchTerm));
 
     let showCards = filteredShow.map(show =>
       createShowCards(show));
