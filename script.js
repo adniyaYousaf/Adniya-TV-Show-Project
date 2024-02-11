@@ -135,7 +135,7 @@ function renderShow() {
     const allShow = data;
 
     let filteredShow = allShow.filter((show) =>
-      show.name.toLowerCase().includes(SearchTerm) || show.summary.toLowerCase().includes(SearchTerm) || show.genres.toLowerCase().includes(SearchTerm));
+      show.name.toLowerCase().includes(SearchTerm) || show.summary.toLowerCase().includes(SearchTerm) || show.genres.includes(SearchTerm));
 
     let showCards = filteredShow.map(show =>
       createShowCards(show));
