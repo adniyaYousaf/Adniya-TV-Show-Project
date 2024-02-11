@@ -112,7 +112,7 @@ function makePageCards() {
     const allEpisodes = data;
 
     let filteredEpisode = allEpisodes.filter((episode) =>
-      (episode.name.toLocaleLowerCase().includes(SearchTerm.toLocaleLowerCase()) || episode.summary.toLocaleLowerCase().includes(SearchTerm.toLocaleLowerCase())));
+      (episode.name.toLocaleLowerCase().includes(SearchTerm)));
 
     let episodeCards = filteredEpisode.map(episode =>
       createEpisodesCard(episode));
