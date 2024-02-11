@@ -61,6 +61,7 @@ function displayEpisodeList() {
       const seasonPluEp = "S" + ep.season.toString().padStart(2, "0") + "E" + ep.number.toString().padStart(2, "0");
       const option = document.createElement('option');
       EpisodeDropDown.appendChild(option);
+      option.setAttribute('id', `${ep.id}`);
       option.textContent = seasonPluEp + "-" + ep.name;
     });
   })
@@ -71,8 +72,8 @@ function displayEpisodeList() {
     let selectedOption = EpisodeDropDown.options[EpisodeDropDown.selectedIndex];
     clearCard();
     clearShows();
-    const nameOfTheEpisodeOnly = selectedOption.textContent.split('-')
-    SearchTerm = nameOfTheEpisodeOnly[1];
+    const episodeName = selectedOption.textContent.split('-')
+    SearchTerm = episodeName[1];
     makePageCards();
 
   });
@@ -106,17 +107,17 @@ function makePageCards() {
   input.addEventListener('input', SearchEpisode);
 
   EpisodeDropDown.style.display = "block";
-
+  showDropDownMenu.style.display = "none";
   getAllEpisodes().then((data) => {
     const allEpisodes = data;
 
     let filteredEpisode = allEpisodes.filter((episode) =>
-      episode.name.includes(SearchTerm));
+      (episode.name.toLocaleLowerCase().includes(SearchTerm.toLocaleLowerCase()) || episode.summary.toLocaleLowerCase().includes(SearchTerm.toLocaleLowerCase())));
 
     let episodeCards = filteredEpisode.map(episode =>
       createEpisodesCard(episode));
 
-    displayShowCardsNumbers(data, filteredEpisode);
+    displayShowCardsNumbers(data, filteredEpisode, " Episodes");
 
     document.querySelector('#container').append(...episodeCards);
     SearchTerm = "";
@@ -134,12 +135,12 @@ function renderShow() {
     const allShow = data;
 
     let filteredShow = allShow.filter((show) =>
-      show.name.includes(SearchTerm));
+      show.name.toLocaleLowerCase().includes(SearchTerm.toLocaleLowerCase()) || show.summary.toLocaleLowerCase().includes(SearchTerm.toLocaleLowerCase()) || show.genres.includes(SearchTerm.toLocaleLowerCase()));
 
     let showCards = filteredShow.map(show =>
       createShowCards(show));
 
-    displayShowCardsNumbers(allShow, filteredShow);
+    displayShowCardsNumbers(allShow, filteredShow, " Shows");
 
     document.querySelector('#show-container').append(...showCards);
 
@@ -157,6 +158,7 @@ function renderShow() {
         EpisodeDropDown.style.display = "block";
       });
     });
+    showDropDownMenu.style.display = "block";
     EpisodeDropDown.style.display = "none";
   });
 }
@@ -210,10 +212,10 @@ function createShowCards(show) {
   return rootElem;
 }
 //This function is display the total number Episodes and show on page
-function displayShowCardsNumbers(data, filtered) {
+function displayShowCardsNumbers(data, filtered, item) {
 
   const displayNumber = document.querySelector('#episodeNumber');
-  displayNumber.textContent = "Displaying " + filtered.length + "/" + data.length + " Items";
+  displayNumber.textContent = "Displaying " + filtered.length + "/" + data.length + item;
 }
 //This function Limit the words of the paragraph
 function limitText(element, limit) {

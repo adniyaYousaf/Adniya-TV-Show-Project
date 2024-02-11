@@ -30,15 +30,14 @@
       </section>
       <section class="selectShow center">
         <select class="show" name="Show" id="selectShow">
-          <option value="0">Select a Show</option>
+          <option value="0" disabled selected>Select a Show</option>
         </select>
       </section>
 
       <section class="selectEpisode center">
-        <select class="episode" name="episode" id="selectEpisode">
-          <option value="1">Select an Episode</option>
-        </select>
+        <select class="episode" name="episode" id="selectEpisode"></select>
       </section>
+      
       <section>
         <input id="input" type="text" placeholder="Filter episodes" />
         <span id="episodeNumber" class="episodeNumber">Displaying </span>
@@ -77,6 +76,10 @@
         </section>
       </template>
     </section>
+
+    <footer>
+      <p>Data is fetched from <a href="https://tvmaze.com/">tvmaze</a></p>
+    </footer>
     <script src="script.js"></script>
   </body>
 </html>
