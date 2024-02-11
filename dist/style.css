@@ -1,0 +1,220 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.center {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  width: 80%;
+}
+
+img {
+  width: 100%;
+}
+
+body {
+  min-height: 100vh;
+  font-size: 1rem;
+  background: black;
+  font-family: "Poppins", sans-serif;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+body header {
+  height: 7rem;
+  width: 100%;
+  display: flex;
+  gap: 1.8rem;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 5rem;
+}
+body header .home {
+  cursor: pointer;
+  color: white;
+  font-size: 2rem;
+  transition: transform 1s ease;
+  transform: scale(1);
+}
+body header .home:hover {
+  color: #f4ecc2;
+  transform: scale(1.1);
+}
+body header input {
+  grid-area: input;
+  height: 3rem;
+  width: 17rem;
+  border: none;
+  outline: none;
+  padding: 1rem;
+  font-size: 1.1rem;
+  background: transparent;
+  color: white;
+  border: none;
+  border-bottom: 1px solid white;
+}
+body header input::placeholder {
+  color: white;
+}
+body header .selectShow {
+  height: 6rem;
+}
+body header .selectShow .show {
+  height: 3rem;
+  width: 17rem;
+  font-size: 1rem;
+  padding: 0.7rem;
+  background: transparent;
+  color: white;
+  border: none;
+  border-bottom: 1px solid white;
+}
+body header .selectShow .show option {
+  color: black;
+}
+body header .selectEpisode {
+  height: 6rem;
+}
+body header .selectEpisode .episode {
+  height: 3rem;
+  width: 17rem;
+  font-size: 1rem;
+  padding: 0.7rem;
+  background: transparent;
+  color: white;
+  border: none;
+  border-bottom: 1px solid white;
+}
+body header .selectEpisode .episode option {
+  color: black;
+}
+body .episodeNumber {
+  color: white;
+  margin-inline-start: 1rem;
+}
+body .container {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 3rem;
+  margin: 2rem;
+}
+body .card {
+  height: 35rem;
+  width: 26rem;
+  text-align: left;
+  background: white;
+  gap: 2rem;
+  transform: scale(1);
+  transition: transform 0.5s ease;
+}
+body .card:hover {
+  transform: scale(1.01);
+}
+body .card .card-title {
+  font-size: 1.6rem;
+  height: 5rem;
+  border-bottom: 5px solid black;
+  margin-bottom: 1rem;
+}
+body .card .card-body {
+  position: relative;
+  padding-inline: 1rem;
+  gap: 1rem;
+  display: flex;
+  font-size: 0.8rem;
+  flex-direction: column;
+  justify-content: center;
+}
+body .card .card-body .card-image {
+  width: 1rem;
+}
+body .card .card-body .card-summary {
+  line-height: 1.7rem;
+  display: flex;
+}
+body .card .card-body .readMore {
+  cursor: pointer;
+  position: absolute;
+  top: 25rem;
+  background: gray;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+}
+body .card .card-body .readMore:hover, body .card .card-body .readMore:focus-visible {
+  background: #f4ecc2;
+  color: black;
+  border: 1px solid black;
+}
+body .show-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 3rem;
+  margin: 2rem;
+}
+body .showCard {
+  cursor: pointer;
+  height: 30rem;
+  width: 80%;
+  display: grid;
+  gap: 2rem;
+  padding: 2rem;
+  background: white;
+  border: 1px solid black;
+  transform: scale(1);
+  transition: 0.5s ease-in-out;
+}
+body .showCard:hover {
+  transform: scale(1.01);
+  background: #f4ecc2;
+}
+body .showCard h1 {
+  text-align: left;
+  font-size: 2.5rem;
+  padding-block: 1rem;
+}
+body .showCard .showBody {
+  display: flex;
+  overflow: hidden;
+  gap: 2rem;
+}
+body .showCard .showBody img {
+  width: 20%;
+}
+body .showCard .showBody p {
+  width: 50%;
+}
+body .showCard .showBody p p {
+  width: 100%;
+}
+body .showCard .showDetails {
+  width: 30%;
+  height: 96%;
+  display: grid;
+  padding: 1rem;
+  justify-content: center;
+  box-shadow: 3px 3px 10px gray;
+}
+body .showCard .showDetails p {
+  width: 100%;
+  font-weight: 700;
+}
+body .showCard .showDetails p span {
+  width: 50%;
+  font-weight: 400;
+}
+
+/*# sourceMappingURL=style.css.map */
