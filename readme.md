@@ -18,7 +18,7 @@ Access the deployed version of the application: <a href='https://adniyayoussaf-t
 ## Technologies Used:
 
 - [x] JavaScript DOM Manipulation
-- [x] CSS, HTML
+- [x] Sass, HTML
 
 
 ## Pie Chart Of Languages Used
@@ -29,6 +29,6 @@ Access the deployed version of the application: <a href='https://adniyayoussaf-t
 pie
     title Languages Used
     "JavaScript" : 99.5
-    "CSS" : 0.5
+    "Sass" : 0.5
     
 ```
