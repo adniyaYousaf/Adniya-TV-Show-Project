@@ -66,10 +66,9 @@ function displayEpisodeList() {
 
 
   EpisodeDropDown.addEventListener('change', () => {
-
     let selectedOption = EpisodeDropDown.options[EpisodeDropDown.selectedIndex];
-    // console.log();
-    // const episodeName = selectedOption.textContent.split("-");
+    const episodeName = selectedOption.textContent;
+    console.log(EpisodeDropDown.value, episodeName);
     clearCard();
     clearShows();
     SearchTerm = selectedOption.textContent.split("-")[1];
