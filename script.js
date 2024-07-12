@@ -16,8 +16,6 @@ async function getAllShows() {
 }
 // fetch Api function to fetch the Episodes of selected show
 async function getAllEpisodes() {
-  const rootElem = document.querySelector('#root');
-  const massage = `<div>Cant load the Episodes</div>`;
 
   return await fetch(`https://api.tvmaze.com/shows/${selectedShow}/episodes`)
     .then((response) => {
@@ -70,12 +68,12 @@ function displayEpisodeList() {
   EpisodeDropDown.addEventListener('change', () => {
 
     let selectedOption = EpisodeDropDown.options[EpisodeDropDown.selectedIndex];
+    // console.log();
+    // const episodeName = selectedOption.textContent.split("-");
     clearCard();
     clearShows();
-    const episodeName = selectedOption.textContent.split('-')
-    SearchTerm = episodeName[1];
+    SearchTerm = selectedOption.textContent.split("-")[1];
     makePageCards();
-
   });
 }
 
@@ -109,11 +107,12 @@ function makePageCards() {
 
   EpisodeDropDown.style.display = "block";
   showDropDownMenu.style.display = "none";
+
   getAllEpisodes().then((data) => {
     const allEpisodes = data;
 
     let filteredEpisode = allEpisodes.filter((episode) =>
-      episode.name.toLowerCase().includes(SearchTerm));
+      episode.name.toLowerCase().includes(SearchTerm.toLowerCase()));
 
     let episodeCards = filteredEpisode.map(episode =>
       createEpisodesCard(episode));
