@@ -10,40 +10,110 @@
   align-items: center;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 body {
   min-height: 100vh;
+  font-size: 1rem;
+  background: #e2e4e9;
+  font-family: "Poppins", sans-serif;
+}
+body header {
+  height: 7rem;
+  width: 100%;
+  background: #353b48;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  padding-inline: 5rem;
+}
+body header input {
+  grid-area: input;
+  height: 3rem;
+  width: 18rem;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  padding: 1rem;
+  color: #747d8c;
+  font-size: 1.3rem;
+}
+body header .selectShow {
+  height: 6rem;
+}
+body header .selectShow .show {
+  height: 3rem;
+  width: 15rem;
+  font-size: 1rem;
+  padding: 0.7rem;
+  border-radius: 0.5rem;
+}
+body header .selectEpisode {
+  height: 6rem;
+}
+body header .selectEpisode .episode {
+  height: 3rem;
+  width: 15rem;
+  font-size: 1rem;
+  padding: 0.7rem;
+  border-radius: 0.5rem;
+}
+body .episodeNumber {
+  color: white;
+  margin-inline-start: 1rem;
+}
+body .container {
   display: grid;
   grid-template-columns: repeat(3, auto);
   gap: 3rem;
-  font-size: 1rem;
-  background: #e2e4e9;
   margin: 2rem;
-  font-family: "Poppins", sans-serif;
 }
 body .card {
-  height: 36rem;
-  width: 20rem;
+  height: 50rem;
+  width: 26rem;
   text-align: left;
   background: white;
   border-radius: 1rem;
   gap: 2rem;
 }
 body .card .card-title {
-  font-size: 1.2rem;
+  font-size: 1rem;
   height: 5rem;
   border: 2px solid black;
   border-radius: 1rem;
   margin-bottom: 1rem;
 }
 body .card .card-body {
+  position: relative;
   padding-inline: 1rem;
   gap: 1rem;
   display: flex;
+  font-size: 0.8rem;
   flex-direction: column;
   justify-content: center;
 }
 body .card .card-body .card-image {
   width: 80%;
+}
+body .card .card-body .card-summary {
+  line-height: 1.7rem;
+  display: flex;
+}
+body .card .card-body .readMore {
+  cursor: pointer;
+  position: absolute;
+  top: 19.5rem;
+  background: gray;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  color: white;
+  text-decoration: none;
+}
+body .card .card-body .readMore:hover, body .card .card-body .readMore:focus-visible {
+  background: red;
 }
 
 /*# sourceMappingURL=style.css.map */
